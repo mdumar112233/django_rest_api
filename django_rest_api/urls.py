@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('rest_api.urls')),
     path('', include('de_serialization.urls')),
+    path('', include('rest_crud.urls')),
 ]
