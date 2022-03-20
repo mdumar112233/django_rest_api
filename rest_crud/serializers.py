@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Studentcrud
 
-class StudentCreate(serializers.Serializer):
+class StudentCreateSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField(max_length=100)
     city = serializers.CharField(max_length=100)
@@ -15,11 +15,10 @@ class StudentCreate(serializers.Serializer):
     # UPDATE METHOD OF REST API
     # UPDATE DATA TO DATABASE
     def update(self, instance, validated_data):
-        print(instance.name)
         instance.name = validated_data.get('name', instance.name)
-        print(instance.name)
         instance.roll = validated_data.get('roll', instance.roll)
         instance.city = validated_data.get('city', instance.city)
+        instance.save()
 
         return instance
 

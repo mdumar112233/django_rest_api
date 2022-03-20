@@ -1,9 +1,10 @@
-from django.http import HttpResponse
+from functools import partial
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import io
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-from .serializers import StudentCreate
+from .serializers import StudentCreateSerializer
 from .models import Studentcrud
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
@@ -25,14 +26,14 @@ def student_api(request):
         ### WITH ID SINGLE DATA GET FROM DATABASE
         if id is not None:
             stu = Studentcrud.objects.get(pk=id)
-            serializer = StudentCreate(stu)
+            serializer = StudentCreateSerializer(stu)
 
             json_data = JSONRenderer().render(serializer.data)
             return HttpResponse(json_data, content_type = 'application/json')
 
         ### WITHOUT ID ALL DATA GET FROM DATABASE
         stu = Studentcrud.objects.all()
-        serializer = StudentCreate(stu, many=True)
+        serializer = StudentCreateSerializer(stu, many=True)
         json_data = JSONRenderer().render(serializer.data)
         return HttpResponse(json_data, content_type = 'application/json')
 
@@ -41,7 +42,7 @@ def student_api(request):
         json_data = request.body
         stream = io.BytesIO(json_data)
         pythondata = JSONParser().parse(stream)
-        serializer = StudentCreate(data = pythondata)
+        serializer = StudentCreateSerializer(data = pythondata)
 
         if serializer.is_valid():
             serializer.save()
@@ -55,9 +56,38 @@ def student_api(request):
 
     ### UPDATE REQUEST
     if request.method == 'PUT':
-        json_data = requst.body
-        stream = io.
+        json_data = request.body
+        stream = io.BytesIO(json_data)
+        pythondata = JSONParser().parse(stream)
+        print('pythondata', pythondata)
 
+        id = pythondata.get('id')
+        stu = Studentcrud.objects.get(pk=id)
+
+        serializer = StudentCreateSerializer(stu, data= pythondata, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            res = {'msg': 'data updated'}
+            return JsonResponse(res)
+        
+        response = JSONRenderer().render(serializer.errors)
+        return HttpResponse(response, content_type='application/json')
+
+    ### DELETE  METHOD
+    if request.method == 'DELETE':
+        json_data = request.body
+        stream = io.BytesIO(json_data)
+        pythondata = JSONParser().parse(stream)
+
+        id = pythondata.get('id')
+        stu = Studentcrud.objects.get(pk=id)
+        stu.delete()
+
+        res = {'msg': 'data delete'}
+        return JsonResponse(res)
+    
+    return HttpResponse('data is not delete')
 
 
   
