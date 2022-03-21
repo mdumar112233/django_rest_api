@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('rest_api.urls')),
     path('', include('de_serialization.urls')),
     path('', include('rest_crud.urls')),
+    path('', include('api_view.urls')),
 ]
