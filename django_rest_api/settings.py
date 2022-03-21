@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'de_serialization',
     'rest_crud',
     'api_view',
+    'generic_api_view',
+    'concrete_api_view',
 ]
 
 MIDDLEWARE = [
