@@ -13,7 +13,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-    # path('gettoken/', CustomAuthToken.as_view())
+    # path('gettoken_auth/', CustomAuthToken.as_view())
 ]
 
 
