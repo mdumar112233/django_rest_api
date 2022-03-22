@@ -25,4 +25,6 @@ urlpatterns = [
     path('', include('generic_api_view.urls')),
     path('', include('concrete_api_view.urls')),
     path('', include('view_set.urls')),
+    path('', include('authentication_with_api.urls')),
+    path('', include('token_authentication.urls')),
 ]
