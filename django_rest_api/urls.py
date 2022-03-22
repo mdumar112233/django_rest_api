@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('api_view.urls')),
     path('', include('generic_api_view.urls')),
     path('', include('concrete_api_view.urls')),
+    path('', include('view_set.urls')),
 ]

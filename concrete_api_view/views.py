@@ -25,7 +25,7 @@ class StudentListCreate(ListCreateAPIView):
     queryset = StudentConcreteModel.objects.all()
     serializer_class = StudentSerializer
 
-
+    
 class StudentRetriveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = StudentConcreteModel.objects.all()
     serializer_class = StudentSerializer

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'api_view',
     'generic_api_view',
     'concrete_api_view',
+    'view_set',
 ]
 
 MIDDLEWARE = [
