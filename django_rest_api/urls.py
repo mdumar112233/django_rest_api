@@ -28,4 +28,6 @@ urlpatterns = [
     path('', include('authentication_with_api.urls')),
     path('', include('token_authentication.urls')),
     path('', include('jwt_authentication.urls')),
+    path('', include('filtering_with_rest.urls')),
+    path('', include('serializer_relation.urls')),
 ]

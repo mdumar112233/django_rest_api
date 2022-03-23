@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'token_authentication',
     'jwt_authentication',
+    'filtering_with_rest',
+
+    'django_filters',
+    'serializer_relation',
 ]
 
 MIDDLEWARE = [
@@ -170,19 +174,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ###### FOR SINGLE CRUD THROTTLE RATE SET IN GLOBALLY ------------
 
-REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_RATES': {
-        'listview' : '2/day',
-        'createview' : '2/minute',
-    }
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_THROTTLE_RATES': {
+#         'listview' : '2/day',
+#         'createview' : '2/minute',
+#     }
+# }
 
 
 
+###### DJANGO FILTERS IMPLEMENT SETTING ------------------
 
+# REST_FRAMEWORK =  {
+#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+# }
 
+###### SEARCH FILTERS IMPLEMENT SETTING ------------------
 
-
+# REST_FRAMEWORK = {
+#     'SEARCH_PARAM': 'q'
+# }
 
 
 
