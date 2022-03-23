@@ -136,7 +136,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-##### GLOBALLY API  BASIC AUTHENTICATION
+
+##### GLOBALLY API  BASIC AUTHENTICATION ---------------
+
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.BasicAuthentication'],
 #     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
@@ -144,13 +146,43 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-##### JWT SETTING
+##### JWT SETTING --------------------------------
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME' : timedelta(minutes = 5),
-    'REFRESH_TOKEN_LIFETIME' : timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False
-} 
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME' : timedelta(minutes = 5),
+#     'REFRESH_TOKEN_LIFETIME' : timedelta(days=1),
+#     'ROTATE_REFRESH_TOKENS': False
+# } 
+
+
+
+###### DJANGO THROTTLE RATE SET IN GLOBALLY ------------
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_THROTTLE_RATES': {
+#         'anon' : '2/day',
+#         'user' : '5/hour',
+#         'employee': '3/minute'
+#     }
+# }
+
+
+###### FOR SINGLE CRUD THROTTLE RATE SET IN GLOBALLY ------------
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_RATES': {
+        'listview' : '2/day',
+        'createview' : '2/minute',
+    }
+}
+
+
+
+
+
+
+
 
 
 
