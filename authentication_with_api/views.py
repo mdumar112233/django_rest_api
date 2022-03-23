@@ -39,19 +39,19 @@ from .throttlings import EmployeeUserRateThrottle
 
 ####### SESSION AUTHENTICATION -------------------------
 
-# class StudentAuthenticateModelViewSet(viewsets.ModelViewSet):
-#     queryset = StudentAuthenticationModel.objects.all()
-#     serializer_class = StudentSerializer
+class StudentAuthenticateModelViewSet(viewsets.ModelViewSet):
+    queryset = StudentAuthenticationModel.objects.all()
+    serializer_class = StudentSerializer
 
-#     ### add basic authentication for crud
-#     ### check setting for global set this authentication
+    ### add basic authentication for crud
+    ### check setting for global set this authentication
 
-#     authentication_classes = [SessionAuthentication]
-#     # permission_classes = [IsAuthenticated]
-#     # permission_classes = [IsAdminUser]
-#     permission_classes = [IsAuthenticatedOrReadOnly]
-#     # permission_classes = [DjangoModelPermissions]
-#     # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAdminUser]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
 
 
@@ -63,18 +63,18 @@ from .throttlings import EmployeeUserRateThrottle
 ##### DJANGO THROTTLING -------------------------------
 
 
-class StudentAuthenticateModelViewSet(viewsets.ModelViewSet):
-    queryset = StudentAuthenticationModel.objects.all()
-    serializer_class = StudentSerializer
+# class StudentAuthenticateModelViewSet(viewsets.ModelViewSet):
+#     queryset = StudentAuthenticationModel.objects.all()
+#     serializer_class = StudentSerializer
 
-    authentication_classes = [SessionAuthentication]
-    # permission_classes = [IsAuthenticated]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+#     authentication_classes = [SessionAuthentication]
+#     # permission_classes = [IsAuthenticated]
+#     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    ### THROTTLE RATE SET IN GLOBALLY 
-    # throttle_classes = [AnonRateThrottle, UserRateThrottle]
+#     ### THROTTLE RATE SET IN GLOBALLY 
+#     # throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
-    throttle_classes = [AnonRateThrottle, EmployeeUserRateThrottle]
+#     throttle_classes = [AnonRateThrottle, EmployeeUserRateThrottle]
 
 
 

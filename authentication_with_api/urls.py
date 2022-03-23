@@ -11,7 +11,7 @@ router.register('studentauthapi', views.StudentAuthenticateModelViewSet, basenam
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 

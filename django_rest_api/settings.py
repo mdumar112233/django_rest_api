@@ -196,4 +196,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 
+###### BROWSERABLE API DISABLE ---------------------
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',)
+}
+
+
+
+
+
 
